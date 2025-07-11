@@ -22,11 +22,11 @@ public function index()
             'error' => null
         ]);
 
-    } catch (\Exception $e) {
-        return view('nba.index', [
-            'players' => [],
-            'error' => 'Erro na API: ' . $e->getMessage()
-        ]);
-    }
+    }  catch (\Illuminate\Http\Client\RequestException $e) {
+    return view('nba.index', [
+        'players' => [],
+        'error' => 'Erro na API: ' . $e->getMessage()
+    ]);
+}
 }
 }
